@@ -5,8 +5,7 @@ A complete collection of my undergraduate projects that highlight a variety of t
 Clone the Repository:
 
 # Copy the repository using Git clone:
-bash
-git clone [<repository_url>](https://github.com/prathmesh-27/CineSense/)
+git clone https://github.com/prathmesh-27/CineSense/
 
 # Create Python Virtual Environment:
 
