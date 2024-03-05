@@ -1,0 +1,341 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #ff3700;
+    --white: #fffefe;
+    --primary-color:#24274a;
+    --secondary-color: #072134;
+    --tertiary-color:#011320;
+ }
+
+#click{
+    background-image: url(../images/background_image.jpg);
+    background-attachment: fixed;
+    
+    
+}
+
+body {
+    background: #fffefe;
+    font-family: 'poppins', sans-serif;
+}
+
+header {
+    position: sticky;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 10;
+    background: var(--tertiary-color);
+    padding: 10px;
+    
+}
+
+.logo {
+width: 75px;
+}
+.nav {
+    display: flex;
+    color: #fff;
+} 
+
+.nav li {
+    list-style: none;
+    margin: 0 10px;
+}
+
+.nav li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav li:hover a {
+    color: var(--primary);
+}
+
+
+.main{
+  height:726px;
+}
+.banner {
+    width: 100%;
+    height: 100%;
+    padding: 0 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background: rgba(0, 0, 0, 0.5);
+}
+.movie-title {
+    max-width: 250px;
+}
+
+
+.content {
+    position: relative;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 50px;
+    background: rgba(48, 45, 45, 0.2);
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius:var(--borderRadius);
+   
+}
+.content img{
+    width: 150px;
+    margin: 15px auto;
+}
+
+
+.content .active {
+    display: block;
+    visibility: visible;
+    transform: scale(1);
+    transition: 0.5s;
+}
+
+.active-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content .active-details h4 {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+    font-size: 24px;
+
+}
+
+.content h4 span {
+    padding: 0 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.content p {
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.5em;
+    color: #ffffff;
+    margin: 10px 0 20px;
+    width: 450px;/* Set the width of the container */
+    overflow: hidden; /* Hide any overflowing content */
+    text-overflow: ellipsis; /* Add an ellipsis (...) */
+}
+.content .button-container a button{
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    background: var(--primary);
+    color: #fff;
+    padding: 6px 20px;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.content .button-container a button:hover {
+    background: #325663;
+}
+
+.panel-section{
+    display: flex;
+    flex-direction: column;
+}
+
+.panel{
+    min-width: 60vw;
+    min-height: 50vh;
+    padding: 15px 10px;
+    background: rgba(255, 242, 242, 0.2);
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius:var(--borderRadius);
+    margin: 10px;
+
+}
+
+.carousel {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content:center;
+}
+
+.carousel-title {
+    color: white;
+    font-weight: 600;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.movies-list {
+    width: 88%;
+    height: 220px;
+    position: relative;
+    margin: 10px 0 20px;
+}
+
+.card-container {
+   white-space: nowrap;
+    height: 250px;
+    width: auto;
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    vertical-align: auto;
+    overflow: hidden;
+    padding-bottom: 10px !important;
+    scroll-behavior: smooth;
+}
+
+/* To remove scroll bar from movie cards */
+/* .card-container::-webkit-scrollbar {
+    display: none;
+} */
+.scroller{
+    overflow: scroll;
+    overflow-y: hidden;
+    height: 300px;
+}
+
+.recommended-movies{
+    margin: 10px auto;
+}
+.recommended-section{
+    height:600px;
+    background-color: var(--tertiary-color);
+}
+.card{
+    margin: 10px 4px 10px 10px;
+    padding-bottom: 10px;
+    border-radius:var(--borderRadius);
+    overflow:hidden;
+    background-color: rgb(46, 48, 49);
+    min-width: 147px;
+    max-width: 147px;
+}
+
+.card-container img {
+    min-width: 147px;
+    max-width: 147px;
+    background-size:cover;
+    cursor: pointer;
+    transition: 0.5s ease;
+    z-index: 1;
+  
+}
+.card-container img:hover {
+    transform: scale(1.2);
+    z-index: 2;
+    background: linear-gradient(to bottom, #0c111b 0%, #0c111b00);
+}
+.card p{
+    color: white;
+    text-align: center;
+    padding: 10px auto;
+}
+
+.pre-btn,
+.nxt-btn {
+    position: absolute;
+    top: 0;
+    width: 5%;
+    height: 100%;
+    z-index: 5;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.pre-btn {
+    left: 0;
+    margin-top: 1%;
+    background: linear-gradient(to right, #0c111b 0%, #0c111b00);
+}
+
+.nxt-btn {
+    right: 0;
+    margin-top: 1%;
+    background: linear-gradient(to left, #0c111b 0%, #0c111b00);
+}
+
+.pre-btn img,
+.nxt-btn img {
+    width: 15px;
+    height: 20px;
+    opacity: 0;
+}
+
+.pre-btn:hover img,
+.nxt-btn:hover img {
+    opacity: 1;
+}
+
+
+
+hr{
+    width: 80%;
+    margin: auto;
+    background-color: white;
+}
+
+
+.card-content {
+    /* Add any other necessary styles for .card-content */
+    word-wrap: break-word; /* This allows long words to break and wrap onto the next line */
+    max-width: 100%;
+
+}
+.card-content span {
+    max-width: 147px; /* This will constrain the width to the container's width */
+    display: inline-block; /* Ensures that the span respects max-width */
+    word-break: break-all;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #33b6ab;
+    border-top: 1px solid #ddd;
+}nav ul {
+    list-style-type: none;
+    padding: 0;
+} */ 

@@ -1,0 +1,423 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+
+*{
+   padding: 0px;
+   margin: 0px;
+   box-sizing: border-box;
+   font-family: 'Poppins', sans-serif;
+   perspective: 800px;
+}
+
+:root {
+   --primary: #ff3700;
+   --white: #fffefe;
+   --primary-color:#24274a;
+   --secondary-color: #072134;
+   --tertiary-color:#011320;
+}
+
+.container-custom {
+   background-color: var(--secondary-color);
+   display: flex;
+   flex-direction: column;
+   height: 100vh;
+}
+
+header {
+    position: sticky;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 10;
+    background: var(--tertiary-color);
+    padding: 10px;
+}
+
+header .left-side img {
+   width: 75px;
+}
+
+
+
+header .right-side a {
+   margin: 0 15px;
+   font-size: 16px;
+   text-decoration: none;
+   color: #fff;
+}
+
+.main {
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   height: 80vh;
+}
+
+.home-card {
+    text-align: center;
+    width: 400px;
+    height: 400px;
+    border-radius: 100px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(244, 241, 241, 0.9);
+    cursor: pointer;
+    z-index: 1;
+    transition: .5s;
+    color: #227093;
+}
+
+.home-card  h2 {
+   font-size: 25px;
+}
+
+.home-card  p {
+   margin-top: 20px;
+   font-size: 18px;
+}
+
+footer {
+   background-color:var(--tertiary-color);
+   color: #fff;
+   text-align: center;
+   padding: 10px 0;
+   height: 10vh;
+}
+
+footer a {
+   text-decoration: none;
+   color: #fff;
+   margin: 0 10px;
+}
+
+.logo {
+    font-size: 50px;
+    color: white;
+    letter-spacing: 1px;
+    font-weight: 800;
+}
+
+.nav {
+    display: flex;
+    color: #fff;
+}
+
+.nav li {
+    list-style: none;
+    margin: 0 10px;
+}
+
+.nav li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav li:hover a {
+    color: var(--primary);
+}
+
+.search {
+    position: relative;
+    width: 300px;
+    height: 40px;
+}
+
+.search input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    background: transparent;
+    border: 1 solid rgba(255, 255, 255, 0.5);
+    outline: none;
+    border-radius: 4px;
+    padding: 0 10px 0 45px !important;
+    backdrop-filter: blur(10px);
+}
+
+.search input::placeholder {
+
+    color: white;
+}
+
+.search i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    padding-right: 10px;
+    color: #fff;
+    border-right: 1px solid #fff;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+}
+
+.video-container {
+    max-width: 100%;
+    margin: 15px auto;
+    border: 3px solid red;
+}
+
+#myVideo {
+    width: 1200px;
+}
+
+.details {
+    width: 100%;
+    margin: 15px auto;
+    background-color:var(--tertiary-color);
+}
+
+.details-section {
+   
+    width: 76%;
+    margin: 15px auto;
+    border: 2px solid white;
+    padding: 10px;
+    background-color:var(--secondary-color);
+}
+
+.details-section p{
+font-size: 16px;
+color: var(--white);
+}
+
+.details h3, .review-container h3{
+    text-align: center;
+    color: azure;
+    font-size: 1.5em;
+    margin: 10px 0px;
+}
+
+.review-container {
+    width: 100%;
+    margin: 15px auto;
+    background-color:var(--tertiary-color);
+
+}
+
+
+
+.no-results {
+    color: white;
+}
+
+.review-container h1 {
+    text-align: center;
+}
+
+
+
+.input-box {
+    display: flex;
+    column-gap: 6px;
+    align-items: center;
+}
+
+.input-box textarea {
+    height: 2em;
+    width: 25em;
+    display: flex;
+    column-gap: 6px;
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    font-size: 30px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.rating label:before {
+    content: "\2605";
+}
+
+.rating input:checked~label {
+    color: #ffcc00;
+}
+
+
+.positive {
+    background-color: rgb(24 231 111 / 50%);
+    backdrop-filter: blur(1rem);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+}
+
+.negative {
+    background-color: rgba(231, 24, 24, 0.84);
+    backdrop-filter: blur(1rem);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+}
+
+.user-review {
+
+
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+}
+
+.user-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.user-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-info .username {
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.user-info .rating {
+    font-size: 16px;
+}
+
+.indicator {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.review-text {
+    flex: 2;
+    font-size: 16px;
+}
+
+
+#reviewForm {
+    border: 2px solid red;
+}
+
+.Cast-section {
+    position: relative;
+    margin: 10px auto 20px;
+
+}
+
+.card-container {
+    white-space: nowrap;
+    width: auto;
+    display: flex;
+   justify-content: center;
+    overflow: hidden;
+    padding-bottom: 10px !important;
+    scroll-behavior: smooth;
+}
+
+/* To remove scroll bar from movie cards */
+/* .card-container::-webkit-scrollbar {
+display: none;
+} */
+hr{
+   width: 80%;
+   margin: auto;
+   background-color: white;
+}
+
+.scroller {
+    overflow: scroll;
+    overflow-y: hidden;
+}
+
+.card {
+    margin: 10px 4px 10px 10px;
+    padding-bottom: 10px;
+    border-radius: var(--borderRadius);
+    overflow: hidden;
+    background-color: var(--secondary-color);
+    width: 160px;
+    height: 215px;
+    border:2px solid white;
+}
+
+.card p {
+    text-align: center;
+margin-bottom: 1px;
+    color: azure;
+}
+
+.card-container .card img {
+   border-radius: 50%;
+   border: 2px solid green;
+   width: 120px;
+   height: 120px;
+   margin: 5px auto;
+   justify-content: center;
+   align-items: center;
+   background-size: cover;
+   cursor: pointer;
+   transition: 0.5s ease;
+   z-index: 1;
+}
+
+.card-content{
+    width: 150px;
+    margin: auto;
+}
+
+.no-reviews{
+    color: #e98996;
+    font-size: xx-large;
+    margin: 50px;
+}
+
+.detailsContainer{
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+}
+.detailsCard {
+    font-weight: 400;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    padding: 20px;
+    width: 45%;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: transparent;
+    padding: 100px;
+    border-radius: 30px;
+    border: 2px solid rgba(245, 241, 241, 0.5);
+    text-align: center;
+    backdrop-filter: blur(30px);
+    color: aliceblue;
+}
+

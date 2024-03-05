@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block title %} Payment {% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/form.css')}}">
+{% endblock %}
+
+{%block content %}
+<div class="whole-container">
+    <div class="form-container">
+        <h2 class="twiceEm-and-white">Payment Information</h2>
+        <form action="/payment" id="payment-form" method='post'>
+            <div class="form-group">
+                <label for="card-number">Name</label>
+                <input class="form-control" type="text"  id="name_card" value="{{fname}}" placeholder="{{fname}}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="card-number">Card Number</label>
+                <input class="form-control" type="text" name="card-number" id="card-number" placeholder="1122 3344 5566 7788" required>
+            </div>
+            <div class="form-group">
+                <label for="expiration">Expiration Date</label>
+                <input class="form-control" type="text" name="expiration" id="expiration" placeholder="MM/YY" required>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input class="form-control" type="text" name="cvv" id="cvv" placeholder="000" required>
+            </div>
+
+
+            <input type="hidden" name="subs_type" value="{{subs_type}}" id="subs_type">
+            <input type="hidden" name="price" value="{{price}}" id="price">
+            <input type="hidden" name="fname" id="subs_type" value="{{fname}}">
+            <input type="hidden" name="uname"  id="uname" value="{{uname}}">
+            <input type="hidden" name="email" id="email" value="{{email}}">
+            <input type="hidden" name="number" id="number" value="{{number}}">
+            <input type="hidden" name="password" id="password" value="{{password}}">
+
+            
+            <button class="btn-big" type="submit">Pay Amount : &#8377; {{price}}</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% block title %}User Details{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{%endblock%}
+{%block header %}
+<h1 style="color: aliceblue;">My Details</h1>
+<ul class="nav">
+    <li> <a href="/movie_home"><i class="fa fa-home"></i> Home</a></li>
+
+</ul>
+{% endblock %}
+
+{%block content %}
+
+<div class="detailsContainer">
+    <div class="detailsCard" id="userDetailsCard">
+        <h2>User Details</h2>
+        <p><strong>Name:</strong> <span id="userName">{{user.fullname}}</span></p>
+        <p><strong>Email:</strong> <span id="userEmail">{{user.email}}</span></p>
+        <p><strong>Phone Number:</strong> <span id="userPhone">{{user.phone_number}}</span></p>
+    </div>
+
+    <div class="detailsCard" id="subscriptionDetailsCard">
+        <h2>Subscription Details</h2>
+        <p><strong>Plan Name:</strong> <span id="planName">{{subscription.subscription_type}}</span></p>
+        <p><strong>Plan Activation Date:</strong> <span id="activationDate">{{subscription.subscription_date}}</span></p>
+        <p><strong>Amount of Plan:</strong> <span id="planAmount">₹ {{amount}}</span></p>
+    </div>
+</div>
+<div class="review-container">
+    <h3>My Reviews</h3>
+    <div class="reviews" id="reviews">
+        <!-- Reviews will be displayed here -->
+
+   {% if reviews%}
+ 
+    {% for review in reviews%}
+            <div class="user-review {% if review.label %}positive{% else %}negative{% endif %} ">
+                <div class="user-info">
+                    <div class="userId">UserId: {{review.user_id}}</div>
+                    <div class="username">{{review.user.username}}</div>
+                    <div class="movie_Id">MovieId: {{review.movie_id}}</div>
+                    <div class="rating-display">Rating: {{ review.rating }}</div>
+                </div>
+                <div class="indicator">{% if review.label %}+{% else %}-{% endif %}</div>
+                <div class="review-text">
+                    {{ review.review }}
+                </div>
+                  <button type="button" class="close" onclick="deleteReview('{{review.id}}')"><span aria-hidden="true">&times;</span></button>
+                     
+
+            </div>
+      {%endfor %}
+
+      {% else%}
+        <div align="center" class="no-reviews">No reviews yet</div>
+      {%endif%}
+
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+
+function deleteReview(reviewId){
+    console.log(reviewId)
+
+fetch('/deleteReview',{
+method:'Post',
+body:JSON.stringify({reviewId : reviewId})
+    }).then((_res)=>{
+    window.location.href='/user_info';
+})
+}
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block title %} CineSense: Sentiment-Driven OTT Experience {% endblock %}
+{% block css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{url_for('static',filename='css/movie_home.css')}}">
+{% endblock %}
+{%block header %}
+<img src="{{url_for('static',filename='images/logo.png')}}" class="logo" />
+<ul class="nav">
+
+    <li> <a href="#"><i class="fa fa-home"></i> Home</a></li>
+    <li> <a href="/explore?type=movie"><i class="fa fa-film" aria-hidden="true"></i>Movies</a></li>
+    <li> <a href="/explore?type=tv"><i class="fa fa-television" aria-hidden="true"></i>TV Show</a></li>
+    <li> <a href="/user_info"><i class="fa fa-user" aria-hidden="true"></i>User</a></li>
+    <li> <a href="/logout"><i class='fa fa-sign-out' aria-hidden="true"></i>Logout</a></li>
+</ul>
+{% endblock %}
+{%block content %}
+
+    <main class="main">
+        <section class="banner">
+            <div class="content active">
+                <!-- clicked movie content goes here  -->
+            </div>
+
+            <div class="panel popular-movies">
+                <div class="carousel">
+                    <h3 class="carousel-title">Popular movies </h3>
+                    <div class="movies-list">
+                        <button class="pre-btn"><img src="{{url_for('static',filename='images/pre.png')}}" alt=""
+                                onclick="SliderScrollLeft()"></button>
+                        <button class="nxt-btn"><img src="{{url_for('static',filename='images/nxt.png')}}" alt=""
+                                onclick="SliderScrollRight()"></button>
+                        <ol class="card-container">
+
+                            <!-- Details for each person will be displayed here  
+                                                                                 which is in javascript-->
+
+                        </ol>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section class="banner recommended-section">
+            <div class="panel recommended-movies">
+                <div class="carousel">
+                    <h3 class="carousel-title">Recommended For You</h3>
+                    <div class="movies-list">
+            
+                        <ol class="card-container scroller">
+                            {% for movie in recommended_movies %}
+                            <li class="card">
+                                <img src="https://image.tmdb.org/t/p/w185/{{ movie['poster_path'] }}" class=" card-img img-${index}" alt="image-not-found" onclick="showDetails(movie['id'])"/>
+                                <p>{{ movie['title'] }}</p>
+                            </li>
+                            {% endfor %}
+                        </ol>
+      
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+
+{% endblock %}
+
+
+
+
+
+
+{% block javascript%}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"></script>
+<script src="{{url_for('static',filename='js/movie_home.js')}}"></script>
+{%endblock%}
+

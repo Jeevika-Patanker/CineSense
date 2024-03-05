@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --primary: #ff3700;
+    --white: #fffefe;
+    --primary-color:#24274a;
+    --secondary-color: #072134;
+    --tertiary-color:#011320;
+ }
+
+ .logo{
+    width: 75px;
+ }
+
+.whole-container {
+    font-family: Arial, sans-serif;
+    background: url(../images/background_image.jpg);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container {
+    background-color: transparent;
+    padding: 3% 5%;
+    border-radius: 30px;
+    border: 5px solid rgba(255, 255, 255, 0.63);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    backdrop-filter: blur(3px);
+}
+.sign-up-form-container {
+    width: 30%;
+}
+
+
+
+/*Styling for Sign Up form and Login form */
+
+.twiceEm-and-white {
+    font-size: 32px;
+    color: white;
+}
+
+.form-group {
+    margin: 15px 0;
+    text-align: left;
+
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: azure;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],.input-box textarea {
+    color:white;
+    background: transparent;
+}
+
+input[readonly]{
+    color:white;
+    background: transparent;
+}
+
+.btn-big {
+    background: transparent;
+    color: azure;
+    padding: 15px 95px;
+    border: 1px solid azure;
+    border-radius: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.btn-big:hover {
+    background: var(--primary-color);
+    color: azure;
+    box-shadow: 0 0 5px #a5a5a5,
+        0 0 25px #a5a5a5,
+        0 0 50px #a5a5a5,
+        0 0 200px #a5a5a5;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+}
+
+.sml-btn {
+    background: transparent;
+    color: azure;
+    padding: 10px;
+    border: 1px solid silver;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.sml-btn:hover {
+    background: var(--primary-color);
+    color: azure;
+    box-shadow: 0 0 5px #a5a5a5,
+        0 0 25px #a5a5a5,
+        0 0 50px #a5a5a5,
+        0 0 200px #a5a5a5;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+}
+
+.note {
+    margin: 1.5em;
+    font-size: 1em;
+    color: white;
+    font-weight: bold;
+}
+
+
+/* Styling for Subscription Cards */
+.subscription-card-container {
+    width: 200px;
+    height: 230px;
+    position: relative;
+    margin: 0px 20px;
+  }
+
+  .subscription-card {
+    border-radius: 3%;
+    width: 100%;
+    height: 100%;
+    
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    background-color: var(--secondary-color);
+    color: azure;
+  }
+
+  .subscription-card .front, .subscription-card .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+  }
+
+  .subscription-card .back {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    transform: rotateY(180deg);
+  }
+
+  .subscription-card:hover {
+    transform: rotateY(180deg);
+  }
+
+.size24px {
+    font-size: 24px;
+}
+
+.rows {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+
+/* Used in current_screen page */
+.formbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 50px auto;
+}
+
+.input-box {
+    display: flex;
+    column-gap: 6px;
+    align-items: center;
+}
+
+.input-box label{
+    color: white;
+}
+
+.custom-btn{
+    margin: 10px auto;
+}
+
+.custom-btn-current{
+    margin-left: 50%;
+}

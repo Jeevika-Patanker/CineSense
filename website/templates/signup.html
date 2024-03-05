@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block title %}Sign-Up{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/form.css')}}">
+{% endblock %}
+
+{%block content %}
+<div class="whole-container">
+    <div class="form-container sign-up-form-container">
+        <h1 class="twiceEm-and-white">Sign up</h1>
+        <form  id="sign-up-form" method="post">
+            
+            <div class="form-group">
+                <label for="fname">Full Name</label>
+                <input class="form-control form-control-sm" type="text" id="fname" name="fname" required>
+            </div>
+            <div class="form-group">
+                <label for="uname">User Name</label>
+                <input class="form-control form-control-sm" type="text" id="uname" name="uname" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control form-control-sm" type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="number">Phone Number</label>
+                <input class="form-control form-control-sm" type ="number"id="number" name="number" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control form-control-sm" type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="cpassword"> Confirm Password</label>
+                <input class="form-control form-control-sm" type="password" id="cpassword" name="cpassword" required>
+            </div>
+
+            <button type="submit" class="btn btn-outline-primary btn-lg" >Next</button>
+        </form>
+    </div>
+
+
+</div>
+{% endblock %}

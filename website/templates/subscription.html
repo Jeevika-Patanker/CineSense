@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+{% block title %} Subscription Plans {% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/form.css')}}">
+{% endblock %}
+
+{%block content %}
+<div class="whole-container">
+    <div class="form-container">
+        <h1 class="twiceEm-and-white">Choose a Subscription Plan</h1>
+
+        <div class="rows">
+            <div class="subscription-card-container plan" id="Basic-Plan">
+                <div id="basic" class="subscription-card" >
+                    <div class="front">
+                        <h2>Basic Plan</h2>
+                    </div>
+                    <div class="back">
+                        <p>Price: ₹199 per month</p>
+                        <p>Core features included.</p>
+                        <p>Limited access to premium features.</p>
+
+                        <button class="sml-btn" onclick="selectPlan('Basic-Plan', 199.00)">Select</button>
+                    </div>
+                </div>
+            </div>
+
+            <div  class="subscription-card-container plan" id="Standard-Plan">
+                <div id="standard" class="subscription-card" >
+                    <div class="front">
+                        <h2>Standard Plan</h2>
+                    </div>
+                    <div class="back">
+                        <p>Price: ₹299 per month</p>
+                        <p>All basic features included.</p>
+                        <p>Access to a broader range of features.</p>
+                        <button class="sml-btn" onclick="selectPlan('Standard-Plan',299.00)">Select</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="rows">
+            <div  class="subscription-card-container plan" id="Gold-Plan">
+                <div id="gold" class="subscription-card" >
+                    <div class="front">
+                        <h2>Gold Plan</h2>
+                    </div>
+                    <div class="back">
+                        <p>Price: ₹499 per month</p>
+                        <p>All standard features included.</p>
+                        <p>Priority support.</p>
+                        <button class="sml-btn" onclick="selectPlan('Gold-Plan', 499.00)">Select</button>
+                    </div>
+                </div>
+            </div>
+            <div  class="subscription-card-container plan" id="Diamond-Plan">
+                <div id="diamond" class="subscription-card" >
+                    <div class="front">
+                        <h2>Diamond Plan</h2>
+                    </div>
+                    <div class="back">
+                        <p>Price: ₹699 per month</p>
+                        <p>All gold features included.</p>
+                        <p>VIP support with faster response times.</p>
+                        <button class="sml-btn" onclick="selectPlan('Diamond-Plan', 699.00)">Select</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+           <form action="/subscription" method="post">
+            <input type="hidden" name="subs_type" id="subs_type">
+            <input type="hidden" name="price" id="price">
+            <input type="hidden" name="fname" id="subs_type" value="{{fname}}">
+            <input type="hidden" name="uname"  id="uname" value="{{uname}}">
+            <input type="hidden" name="email" id="email" value="{{email}}">
+            <input type="hidden" name="number" id="number" value="{{number}}">
+            <input type="hidden" name="password" id="password" value="{{password}}">
+            <button class="btn-big" type="submit" onclick="checkIfFormIsNull(event)" >Go to Payment Page</button>
+           </form>
+         
+    </div>
+
+
+</div>
+{% endblock %}
+
+
+{%block javascript %}
+<script src="{{url_for('static',filename='js/subscription.js')}}"></script>
+
+{% endblock %}

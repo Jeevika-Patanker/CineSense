@@ -1,0 +1,243 @@
+{% extends "layout.html" %}
+{% block title %}Watch Movie{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/form.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+{% endblock %}
+
+{%block header %}
+
+<img src="{{url_for('static',filename='images/logo.png')}}" class="logo" />
+<ul class="nav">
+    <li> <a href="/movie_home"><i class="fa fa-home"></i> Home</a></li>
+</ul>
+{% endblock %}
+
+{%block content %}
+<main id="main">
+
+    <div class="video-container">
+        <video id="myVideo" controls>
+            <source src="Genshin_Impact.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="details">
+        <!-- Details should go here -->
+        <h3>Movie Details</h3>
+        <hr />
+        <!-- <h3>{{type}}</h3>
+        <h3>{{movieid}}</h3> -->
+        <div class="details-section" id="movie-details">
+            <!-- All the movie details are added here by JS  -->
+        </div>
+        <h3>Cast Details</h3>
+        <hr />
+        <div class="Cast-section">
+            <ol class="card-container cast-container ">
+                <!-- All the cast details are added here by JS  -->
+            </ol>
+        </div>
+    </div>
+
+    <div class="review-container">
+        <h3>Customer Reviews</h3>
+        <div class="reviews" id="reviews">
+            <!-- Reviews will be displayed here -->
+            {% if reviews %}
+
+                {% for review in reviews %}
+                <div class="user-review {% if review.label %}positive{% else %}negative{% endif %}">
+                    <div class="user-info">
+                        <div class="userId">UserId: {{ review.user_id }}</div>
+                        <div class="username">{{review.user.username}}</div>
+                        <div class="rating-display">Rating: {{ review.rating }}</div>
+                    </div>
+                    <div class="indicator ">{% if review.label %}+{% else %}-{% endif %}</div>
+                    <div class="review-text">
+                        {{ review.review }}
+    
+                    </div>
+                </div>
+                {% endfor %}
+        {% else %}
+            <div align="center" class="no-reviews">No reviews yet</div>
+        {% endif %}
+
+        </div>
+        <form action="/predict" id="reviewForm" method="post">
+            <div class="formbox">
+                <div class="input-box"><label>Rating (1-10):</label>
+                    <div class="rating">
+                        <input type="radio" name="rating" id="rating10" value="10">
+                        <label for="rating10"></label>
+                        <input type="radio" name="rating" id="rating9" value="9">
+                        <label for="rating9"></label>
+                        <input type="radio" name="rating" id="rating8" value="8">
+                        <label for="rating8"></label>
+                        <input type="radio" name="rating" id="rating7" value="7">
+                        <label for="rating7"></label>
+                        <input type="radio" name="rating" id="rating6" value="6">
+                        <label for="rating6"></label>
+                        <input type="radio" name="rating" id="rating5" value="5">
+                        <label for="rating5"></label>
+                        <input type="radio" name="rating" id="rating4" value="4">
+                        <label for="rating4"></label>
+                        <input type="radio" name="rating" id="rating3" value="3">
+                        <label for="rating3"></label>
+                        <input type="radio" name="rating" id="rating2" value="2">
+                        <label for="rating2"></label>
+                        <input type="radio" name="rating" id="rating1" value="1">
+                        <label for="rating1"></label>
+                    </div>
+                </div>
+                <div class="input-box"><label for="comment">Comment:</label><br>
+                    <textarea class="form-control" id="comment" name="comment" rows="4" cols="50" required></textarea><br>
+                </div>
+                <input type="hidden" name="movieId" value="{{movieid}}" id="movieId">
+                <input type="hidden" name="type" value="{{type}}" id="type">
+            </div>
+
+
+
+
+            <button type="submit" class="btn btn-light btn-lg custom-btn-current">Submit Review</button>
+        </form>
+    </div>
+
+
+</main>
+{% endblock %}
+{%block javascript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"></script>
+<script>
+    const video = document.getElementById('myVideo');
+
+    function playPause() {
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    }
+
+    function stop() {
+        video.pause();
+        video.currentTime = 0;
+    }
+
+    function muteUnmute() {
+        video.muted = !video.muted;
+    }
+
+    function setVolume(volume) {
+        video.volume = volume / 100;
+    }
+
+
+
+
+    // for getting rating 
+    var rating = 0;
+    const ratingInputs = document.querySelectorAll('.rating input');
+    ratingInputs.forEach(input => {
+        input.addEventListener('change', () => {
+            rating = input.value;
+            console.log(input.value)
+        });
+    });
+
+
+    const queryString = window.location.search;
+    console.log(queryString);
+
+    const urlParams = new URLSearchParams(queryString);
+
+    const type = urlParams.get('type')
+    console.log(type);
+
+    const id = urlParams.get('movieId')
+
+    console.log(id)
+
+
+    const movie_details = document.getElementById('movie-details');
+    const cast = document.querySelector('.cast-container');
+
+    const API_KEY = 'api_key=b2084cac0164f1d1fb47762399c270af'
+    const API_URL = 'https://api.themoviedb.org/3/' + type + '/' + id + '?language=en-US&api_key=b2084cac0164f1d1fb47762399c270af'
+    const CAST_URl = 'https://api.themoviedb.org/3/' + type + '/' + id + '/credits?language=en-US&api_key=b2084cac0164f1d1fb47762399c270af'
+
+    showSpecificMovieData();
+    showCastData()
+
+    async function showSpecificMovieData() {
+        //fetching movie details here
+        let title = ''
+        var result = await axios.get(API_URL) // to fetch movies data
+        console.log(result.data);
+
+        result = result.data;
+
+        if (type == 'tv') {
+            movie_details.innerHTML = `
+                <p><span>Title: ${result.name}</span></p>
+                <p><span>Ratings: ${result.vote_average}</span></p>
+                <p><span>Genre:  ${result.genres} </span></p>
+                <p><span>Overview: ${result.overview}</span></p>
+
+                <p>Total Episodes: ${result.number_of_episodes} 
+                </p>
+                <p>Total Seasons: ${result.number_of_seasons} 
+                </p>
+
+        `
+        } else {
+            movie_details.innerHTML = `
+                <p><span>Title:  ${result.original_title}</span></p>
+                <p><span>Ratings:  ${result.vote_average}</span></p>
+                <p><span>Genre: ${result.genres} </span></p>
+                <p><span>Overview: ${result.overview}</span></p>
+
+        `
+        }
+
+
+
+
+
+    }
+
+
+    async function showCastData() {
+        //fetching movie details here
+        var result = await axios.get(CAST_URl) // to fetch movies data
+        console.log(result.data.cast);
+        result = result.data.cast;
+
+
+        result.splice(0, 7).map(function (cur, index) {
+            cast.insertAdjacentHTML(
+                "beforeend",
+                ` 
+            <li class="card">
+                        <img src="https://image.tmdb.org/t/p/w185/${cur.profile_path}"
+                            class=" card-img img-${index}" alt="image-not-found" onclick="showDetails(${index})" />
+                            <div class="card-content">
+        <p>${cur.name}</p>
+        <p>${cur.known_for_department}</p>
+        <p>${cur.character}</p>
+    </div>
+                    </li>
+             `
+            )
+            ScrollPerClick = 400
+        })
+
+
+    }
+
+</script>
+
+{% endblock %}

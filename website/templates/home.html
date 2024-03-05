@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block title %}App Home Page{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+{% endblock %}
+
+
+{%block header %}
+<div class="left-side">
+    <img src="{{url_for('static',filename='images/logo.png')}}" alt="CineSense">
+</div>
+<div class="right-side">
+    <a href="\login">Login</a>/<a href="\signup"> Sign Up</a>
+    <a href="#">Download Report</a>
+</div>
+{% endblock %}
+
+
+{%block content %}
+<div class="main">
+    <div class="home-card">
+            <h2>About-website</h2>
+            <p>
+                CineSense is an innovative OTT (Over-The-Top) platform that revolutionizes the way you discover and enjoy movies. Leveraging advanced sentiment analysis technology, CineSense not only offers an extensive library of films but also provides personalized recommendations based on the emotional resonance of viewer reviews.
+            </p>
+            <a href="#">
+                <button type="button" class="btn btn-primary">Download Synopsis</button>
+            </a>
+
+    </div>
+    <div class="home-card">
+            <h2>Video Demo</h2>
+            <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                the industry's standard dummy text.
+            </p>
+            <a href="#">
+                <button type="button" class="btn btn-primary">Watch</button>
+            </a>
+    </div>
+</div>
+
+{% endblock %}
+
+{%block footer %} 
+<div class="social-media">
+    <a href="#">Facebook</a>
+    <a href="#">Twitter</a>
+    <a href="#">Instagram</a>
+</div>
+<div class="services-help">
+    <a href="#">Terms of Service</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Contact Us</a>
+    <a href="#">FAQ</a>
+</div>{% endblock %}
