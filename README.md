@@ -39,3 +39,6 @@ python main.py
 
 ## Open Browser and Check Localhost:
 Open your preferred web browser and go to http://localhost:your_port (replace your_port with the actual port your application is running on).
+
+
+Contributer : Prathmesh Vairale, Jeevika Patanker and Adhyan Talwad
